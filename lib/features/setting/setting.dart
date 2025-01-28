@@ -1,1 +1,1 @@
-//Settings of the app
+//Settings for app

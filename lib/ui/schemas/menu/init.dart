@@ -31,15 +31,15 @@ class SchemaMenuInit extends StatelessWidget implements PreferredSizeWidget {
                   print("Button searching for date? for tags");
                 },
                 icon: Icon(Icons.search)),
-            SizedBox(width: 15),
+            SizedBox(width: 5),
             IconButton(
                 onPressed: () {
                   print("Workspace open modal");
                 },
                 icon: Icon(Icons.workspaces)),
-            SizedBox(width: 15),
+            SizedBox(width: 5),
             IconButton(onPressed: fnChangeTheme, icon: Icon(Icons.dark_mode)),
-            SizedBox(width: 15),
+            SizedBox(width: 5),
           ],
         )
       ],
