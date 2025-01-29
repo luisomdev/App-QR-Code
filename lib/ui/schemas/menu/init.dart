@@ -1,5 +1,6 @@
 //Init dart of schema menu
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:app/ui/schemas/menu/search.dart';
 import 'package:flutter/material.dart';
 
 class SchemaMenuInit extends StatelessWidget implements PreferredSizeWidget {
@@ -26,17 +27,7 @@ class SchemaMenuInit extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         Row(
           children: [
-            IconButton(
-                onPressed: () {
-                  print("Button searching for date? for tags");
-                },
-                icon: Icon(Icons.search)),
-            SizedBox(width: 5),
-            IconButton(
-                onPressed: () {
-                  print("Workspace open modal");
-                },
-                icon: Icon(Icons.workspaces)),
+            WindowSearch(),
             SizedBox(width: 5),
             IconButton(onPressed: fnChangeTheme, icon: Icon(Icons.dark_mode)),
             SizedBox(width: 5),

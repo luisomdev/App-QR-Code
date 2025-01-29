@@ -20,6 +20,7 @@ dependencies:
   flex_color_picker: ^3.7.0
   flutter_expandable_fab: ^2.3.0
   animated_text_kit: ^4.2.3
+  flutter_animate: ^4.5.2
 
 dev_dependencies:
   flutter_test:
