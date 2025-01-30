@@ -1,5 +1,6 @@
 import 'package:app/features/database/init.dart';
 import 'package:app/ui/schemas/content/init.dart';
+import 'package:app/ui/schemas/content/options.dart';
 import 'package:app/ui/schemas/menu/init.dart';
 import 'package:app/ui/settings/scroll.dart';
 import 'package:app/ui/settings/theme.dart';
@@ -34,6 +35,7 @@ class MainApp extends StatelessWidget {
           ),
           body: SchemaContent(),
           floatingActionButtonLocation: ExpandableFab.location,
+          bottomNavigationBar: BottomOptionsForm(),
         ),
       );
     });
