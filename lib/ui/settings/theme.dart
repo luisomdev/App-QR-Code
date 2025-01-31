@@ -4,28 +4,22 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-bool verifyTheme(BuildContext context) {
-  if (Theme.of(context).brightness == Brightness.dark) {
-    var readTheme = read("configuration", "theme");
-    if (readTheme.containsKey('theme')) {
-      print("Create data");
-      create("configuration", "theme", {"theme": "light"});
-      return false;
+ThemeMode verifyTheme(BuildContext context) {
+  final themeRead = read('settings', 'theme');
+  if (themeRead.isEmpty) {
+    if (Theme.of(context).brightness == Brightness.light) {
+      create('settings', 'theme', 'dark');
+      print("Esta vacio jodete hijo de la gran puta");
+      return ThemeMode.dark;
     }
-    create("configuration", "theme", {"theme": "dark"});
-    return true;
-  } else {
-    create("configuration", "theme", {"theme": "light"});
-    return false;
   }
-}
 
-ThemeMode switchTheme(BuildContext context) {
-  if (verifyTheme(context)) {
+  if (themeRead == "light") {
+    update('settings', 'theme', 'dark');
     return ThemeMode.dark;
-  } else {
-    return ThemeMode.light;
   }
+  update('settings', 'theme', 'light');
+  return ThemeMode.light;
 }
 
 abstract final class AppTheme {

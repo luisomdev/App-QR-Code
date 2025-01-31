@@ -129,20 +129,6 @@ class _SuggestiveOption extends StatelessWidget {
   }
 }
 
-// class _NotFoundData extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-//         child: Center(
-//           child: Text(
-//             "No data found",
-//             style: TextStyle(fontSize: 25),
-//           ),
-//         ));
-//   }
-// }
-
 class WindowSearch extends StatelessWidget {
   const WindowSearch({super.key});
 

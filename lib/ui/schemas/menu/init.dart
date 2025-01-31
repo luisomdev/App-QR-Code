@@ -1,6 +1,4 @@
 //Init dart of schema menu
-import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:app/ui/schemas/menu/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,7 +20,8 @@ class SchemaMenuInit extends StatelessWidget implements PreferredSizeWidget {
             SvgPicture.asset(
               height: 35,
               "assets/icons/openjs.svg",
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.primary, BlendMode.srcIn),
             ),
             SizedBox(width: 12),
             Text("SF Qr code"),
@@ -31,11 +30,9 @@ class SchemaMenuInit extends StatelessWidget implements PreferredSizeWidget {
         titleSpacing: 25,
         actions: [
           Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 children: [
-                  WindowSearch(),
-                  SizedBox(width: 5),
                   IconButton(
                       onPressed: fnChangeTheme, icon: Icon(Icons.dark_mode)),
                 ],
