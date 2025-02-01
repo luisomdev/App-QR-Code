@@ -1,15 +1,15 @@
 import 'package:hive/hive.dart';
 
-Map<String, String> create(String name, String input, String value) {
+dynamic create(String name, String input, dynamic value) {
   final instance = Hive.box(name: name);
   instance.put(input, value);
-  return {"Status": "Data send"};
+  return instance.get(input);
 }
 
-String read(String name, String search) {
+dynamic read(String name, String search) {
   final instance = Hive.box(name: name);
   var query = instance.get(search);
-  return query ?? "light";
+  return query;
 }
 
 Map<String, dynamic> update(String name, String input, String value) {

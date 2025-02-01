@@ -1,29 +1,16 @@
 //Here the theme and functions about theme.
-import 'package:app/features/database/ops.standart.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 ThemeMode verifyTheme(BuildContext context) {
-  final themeRead = read('settings', 'theme');
-  if (themeRead.isEmpty) {
-    if (Theme.of(context).brightness == Brightness.light) {
-      create('settings', 'theme', 'dark');
-      print("Esta vacio jodete hijo de la gran puta");
-      return ThemeMode.dark;
-    }
+  if (Theme.of(context).brightness == Brightness.dark) {
+    return ThemeMode.light;
   }
-
-  if (themeRead == "light") {
-    update('settings', 'theme', 'dark');
-    return ThemeMode.dark;
-  }
-  update('settings', 'theme', 'light');
-  return ThemeMode.light;
+  return ThemeMode.dark;
 }
 
 abstract final class AppTheme {
-  // The defined light theme.
   static ThemeData light = FlexThemeData.light(
     scheme: FlexScheme.sepia,
     subThemesData: const FlexSubThemesData(

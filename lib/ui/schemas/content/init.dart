@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class SchemaContent extends StatefulWidget {
@@ -15,7 +16,6 @@ class _StateContent extends State<SchemaContent> {
 
   final TextEditingController _controller1 = TextEditingController();
   final TextEditingController _controller2 = TextEditingController();
-  final TextEditingController _controller3 = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -25,7 +25,6 @@ class _StateContent extends State<SchemaContent> {
   void dispose() {
     _controller1.dispose();
     _controller2.dispose();
-    _controller3.dispose();
     super.dispose();
   }
 
@@ -77,7 +76,7 @@ class _StateContent extends State<SchemaContent> {
                   children: <Widget>[
                     TextFormField(
                       controller: _controller1,
-                      onChanged: (value) => updateQRData(value),
+                      onChanged: null,
                       decoration: const InputDecoration(
                         labelText: 'Name',
                       ),
@@ -86,16 +85,9 @@ class _StateContent extends State<SchemaContent> {
                     const SizedBox(height: 16),
                     TextFormField(
                       controller: _controller2,
+                      onChanged: (value) => updateQRData(value),
                       decoration: const InputDecoration(
                         labelText: 'Data',
-                      ),
-                      validator: _validateInput,
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _controller3,
-                      decoration: const InputDecoration(
-                        labelText: 'Tags',
                       ),
                       validator: _validateInput,
                     ),
@@ -105,15 +97,23 @@ class _StateContent extends State<SchemaContent> {
               ),
             ),
             SizedBox(height: 10),
-            TextButton(
+            FilledButton.tonalIcon(
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
-                    print("Submit of form");
-                  } else {
-                    print("Error sintax");
+                    Hive.box(name: 'qrcodes')
+                        .put(_controller1.text, _controller2.text);
+                    print(
+                        Hive.box(name: 'qrcodes').get(_controller1.value.text));
+                    print("Form validate");
                   }
                 },
-                child: Text("Hi htiker"))
+                style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.green)),
+                icon: Icon(Icons.save),
+                label: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                  child: Text("Saved"),
+                ))
           ],
         ),
       ),
